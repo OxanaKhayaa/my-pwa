@@ -38,7 +38,8 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "my-pwa/index.html",
+  "start_url": "index.html",
+  "id": "my-pwa/index.html",
   "scope": ".",
   "display": "standalone",
   "orientation": "portrait-primary",
