@@ -1,0 +1,39 @@
+.block-earn-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 $fs-14 $fs-14 $fs-14;
+
+  &:not(:last-child) {
+    border-bottom: $fs-1 solid $gray-l;
+    margin-bottom: 0.875rem;
+  }
+
+  &:last-child {
+    margin-bottom: $fs-6;
+  }
+
+  .item-info {
+    padding-top: $fs-4;
+
+    .title {
+      font-size: $fs-15;
+      margin-bottom: $fs-3;
+    }
+
+    .desc {
+      color: $success;
+      font-size: 0.791rem;
+      margin-bottom: 0;
+    }
+  }
+
+  .item-cost {
+    font-weight: $font-semi-bold;
+    font-size: $fs-20;
+    color: $primary;
+
+    sup {
+      font-size: $fs-12;
+    }
+  }
+}

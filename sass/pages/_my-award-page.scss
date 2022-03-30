@@ -1,0 +1,144 @@
+.my-award-page {
+  .title-block {
+    min-height: 5.25rem;
+  }
+}
+
+///////////////////////////
+
+.card {
+  margin-bottom: $fs-11;
+}
+
+.card-light {
+  border: $fs-1 solid $gray-l;
+}
+
+.card-header__blue {
+  font-size: 1.45rem;
+  color: $primary;
+  font-weight: $font-normal;
+  text-align: center;
+  padding-top: $fs-7;
+  padding-bottom: $fs-11;
+  background-color: $secondary;
+  border: $fs-1 solid $gray-l;
+  border-bottom: 0;
+}
+
+.card-content {
+  padding: $fs-8;
+}
+
+.card-img {
+  text-align: center;
+
+  img {
+    width: 100%;
+    max-height: $fs-160;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+
+.btn-card-abs {
+  position: relative;
+  margin-top: -$fs-17;
+}
+
+.card-header__btn {
+  color: $white;
+  flex-grow: 1;
+  border: 0;
+  border-bottom: 1px solid $white-transparent-5;
+  margin-top: -1px;
+
+  &:first-child {
+    margin-left: -1px;
+    border-left: 1px solid $white-transparent-5;
+  }
+
+  &:last-child {
+    margin-right: -1px;
+    border-right: 1px solid $white-transparent-5;
+  }
+
+  &:not(.active) {
+    background-color: $green;
+    min-height: $fs-68;
+  }
+
+  &.active {
+    background-color: $primary;
+    position: relative;
+
+    &:before {
+      position: absolute;
+      content: '';
+      bottom: -$fs-7;
+      left: 50%;
+      margin-left: -$fs-8;
+      border: 0 solid transparent;
+      border-left-width: $fs-8;
+      border-right-width: $fs-8;
+      border-top: $fs-8 solid $blue;
+    }
+  }
+
+  sup {
+    font-size: $fs-24;
+    font-weight: $font-semi-bold;
+  }
+
+  .number {
+    font-size: $fs-38;
+    font-weight: $font-semi-bold;
+    line-height: 1;
+  }
+
+  .desc {
+    font-size: $fs-11;
+    line-height: 1.2;
+  }
+}
+
+.card-content__item {
+  &:not(.active) {
+    display: none;
+  }
+}
+
+.card-content {
+
+  .table {
+    width: 100%;
+
+    tr {
+      td:first-child, td:last-child {
+        width: 21%;
+      }
+
+      td:not(:first-child) {
+        text-align: center;
+        font-size: $fs-11;
+      }
+    }
+
+    th {
+      font-size: $fs-14;
+      font-weight: $font-semi-bold;
+      color: $primary;
+      padding-bottom: $fs-4;
+      text-align: center;
+    }
+
+    td {
+      font-size: $fs-12;
+      padding-top: $fs-4;
+      padding-bottom: $fs-4;
+    }
+  }
+}
+
+
+

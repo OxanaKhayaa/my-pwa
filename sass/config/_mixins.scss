@@ -1,0 +1,41 @@
+@mixin font-style($size, $weight, $line-height, $color: $base-body-color) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+  color: $color;
+}
+
+@mixin transition {
+  transition: all 1.5s ease;
+}
+
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}
+
+@mixin push--auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+@mixin border($place, $color, $width) {
+  @if $place == 'all' {
+    border: $width solid $color;
+  } @else {
+    border-#{$place}: $width solid $color;
+  }
+}
+
+@mixin input-placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
