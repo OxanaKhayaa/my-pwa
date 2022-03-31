@@ -9,7 +9,7 @@
       "type": "image/png"
   },
   {
-    "src": "/public/favicon/maskable_icon.png",
+    "src": "./favicon/maskable_icon.png",
     "sizes": "196x196",
     "type": "image/png",
     "purpose": "any maskable"
