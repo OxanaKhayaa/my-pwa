@@ -2,6 +2,14 @@
   "name": "Smile Inspire",
   "short_name": "Dental",
   "description": "",
+  "start_url": "./index.html",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "natural",
+  "scope": "/",
+  "theme_color": "#05B0BF",
+  "dir": "ltr",
+  "lang": "en-US",
   "icons": [
   {
       "src": "./favicon/android-chrome-192x192.png",
@@ -19,14 +27,5 @@
       "sizes": "512x512",
       "type": "image/png"
   }
-  ],
-
-  "start_url": "./index.html",
-  "background_color": "#ffffff",
-  "display": "standalone",
-  "orientation": "natural",
-  "scope": "/",
-  "theme_color": "#05B0BF",
-  "dir": "ltr",
-  "lang": "en-US"
+  ]
 }
