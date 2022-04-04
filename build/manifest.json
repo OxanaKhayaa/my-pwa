@@ -3,11 +3,11 @@
   "short_name": "Dental",
   "description": "",
   "start_url": "index.html",
-  "background_color": "#ffffff",
+  "theme_color": "#05b0bf",
+  "background_color": "#05b0bf",
   "display": "standalone",
   "orientation": "natural",
   "scope": "/",
-  "theme_color": "#05B0BF",
   "dir": "ltr",
   "lang": "en-US",
   "icons": [
