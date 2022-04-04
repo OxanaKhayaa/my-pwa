@@ -1,0 +1,35 @@
+.block-refer {
+  text-align: center;
+  margin-bottom: rem(8);
+
+  &:not(:last-child) {
+    border-bottom: rem(1) solid $gray-l;
+    margin-bottom: rem(8);
+  }
+
+  &:last-child {
+    margin-bottom: rem(24);
+  }
+
+  .i-star {
+    fill: $success;
+    stroke: $success;
+    width: rem(58);
+    height: rem(58);
+    margin-top: rem(-3);
+  }
+
+  .block-refer__title {
+    font-size: rem(14);
+    font-weight: $font-semi-bold;
+    margin-bottom: rem(6);
+  }
+}
+
+.no-webp .card-img.img-2 {
+  background-image: url(../image/man-with-phone.jpg);
+}
+
+.webp .card-img.img-2 {
+  background-image: url(../image/man-with-phone.webp);
+}
