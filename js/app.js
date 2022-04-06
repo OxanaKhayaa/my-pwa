@@ -1,58 +1,33 @@
-//import { Gallery } from './image-list.js';
+/*if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('sw.js')
+        .then(function() {
+            console.log('Service worker registered!');
+        });
+}*/
 
-const registerServiceWorker = async () => {
-    if ('serviceWorker' in navigator) {
-        try {
-            const registration = await navigator.serviceWorker.register(
-                'sw.js',
-                {
-                    scope: 'my-pwa/',
-                }
-            );
-            if (registration.installing) {
-                console.log('Service worker installing');
-            } else if (registration.waiting) {
-                console.log('Service worker installed');
-            } else if (registration.active) {
-                console.log('Service worker active');
-            }
-        } catch (error) {
-            console.error(`Registration failed with ${error}`);
-        }
-    }
-};
+const divInstall = document.getElementById('installContainer');
+const butInstall = document.getElementById('butInstall');
 
-//const imgSection = document.querySelector('section');
+/* Put code here */
 
-/*
-const getImageBlob = async (url) => {
-    const imageResponse = await fetch(url);
-    if (!imageResponse.ok) {
-        throw new Error(
-            `Image didn't load successfully; error code: ${
-                imageResponse.statusText || imageResponse.status
-            }`
-        );
-    }
-    return imageResponse.blob();
-};
 
-const createGalleryFigure = async (galleryImage) => {
-    try {
-        const imageBlob = await getImageBlob(galleryImage.url);
-        const myImage = document.createElement('img');
-        const myCaption = document.createElement('caption');
-        const myFigure = document.createElement('figure');
-        myCaption.textContent = `${galleryImage.name}: Taken by ${galleryImage.credit}`;
-        myImage.src = window.URL.createObjectURL(imageBlob);
-        myImage.setAttribute('alt', galleryImage.alt);
-        myFigure.append(myImage, myCaption);
-        imgSection.append(myFigure);
-    } catch (error) {
-        console.error(error);
-    }
-};
 
-registerServiceWorker();
-Gallery.images.map(createGalleryFigure);
-*/
+/* Only register a service worker if it's supported */
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+}
+
+/**
+ * Warn the page must be served over HTTPS
+ * The `beforeinstallprompt` event won't fire if the page is served over HTTP.
+ * Installability requires a service worker with a fetch event handler, and
+ * if the page isn't served over HTTPS, the service worker won't load.
+ */
+if (window.location.protocol === 'http:') {
+    const requireHTTPS = document.getElementById('requireHTTPS');
+    const link = requireHTTPS.querySelector('a');
+    link.href = window.location.href.replace('http://', 'https://');
+    requireHTTPS.classList.remove('hidden');
+}
+
