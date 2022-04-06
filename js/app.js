@@ -36,10 +36,6 @@ window.addEventListener('appinstalled', (event) => {
     window.deferredPrompt = null;
 });
 
-/* Put code here */
-
-
-
 /* Only register a service worker if it's supported */
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js');
@@ -51,9 +47,9 @@ if ('serviceWorker' in navigator) {
  * Installability requires a service worker with a fetch event handler, and
  * if the page isn't served over HTTPS, the service worker won't load.
  */
-if (window.location.protocol === 'http:') {
+/*if (window.location.protocol === 'http:') {
     const requireHTTPS = document.getElementById('requireHTTPS');
     const link = requireHTTPS.querySelector('a');
     link.href = window.location.href.replace('http://', 'https://');
     requireHTTPS.classList.remove('hidden');
-}
+}*/
