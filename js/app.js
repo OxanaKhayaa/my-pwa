@@ -4,7 +4,7 @@ const registerServiceWorker = async () => {
     if ('serviceWorker' in navigator) {
         try {
             const registration = await navigator.serviceWorker.register(
-                'my-pwa/sw.js',
+                'sw.js',
                 {
                     scope: 'my-pwa/',
                 }
