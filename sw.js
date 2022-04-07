@@ -1,28 +1,14 @@
-const CACHE_NAME = 'offline';
-const OFFLINE_URL = 'offline.html';
+/*importScripts('/src/js/idb.js');
+importScripts('/src/js/utility.js');*/
 
-self.addEventListener('install', function(event) {
-    /*console.log('[ServiceWorker] Install');
-
-    event.waitUntil((async () => {
-        const cache = await caches.open(CACHE_NAME);
-        // Setting {cache: 'reload'} in the new request will ensure that the response
-        // isn't fulfilled from the HTTP cache; i.e., it will be from the network.
-        await cache.add(new Request(OFFLINE_URL, {cache: 'reload'}));
-    })());
-
-    self.skipWaiting();*/
-
-
-
-
+self.addEventListener('install', event => {
     console.log('Installing [Service Worker]', event);
+
     event.waitUntil(
         caches.open('static')
             .then(cache => {
                 console.log('[Service Worker] Precaching App Shell');
                 cache.addAll([
-                    /*'/',*/
                     'index.html',
                     'my-awards.html',
                     'refer-and-earn.html',
@@ -56,44 +42,58 @@ self.addEventListener('install', function(event) {
 
                 ]);
             }));
-
 });
 
-self.addEventListener('activate', (event) => {
-    console.log('[ServiceWorker] Activate');
-    event.waitUntil((async () => {
-        // Enable navigation preload if it's supported.
-        // See https://developers.google.com/web/updates/2017/02/navigation-preload
-        if ('navigationPreload' in self.registration) {
-            await self.registration.navigationPreload.enable();
-        }
-    })());
-
-    // Tell the active service worker to take control of the page immediately.
-    self.clients.claim();
-});
-
-self.addEventListener('fetch', function(event) {
-    // console.log('[Service Worker] Fetch', event.request.url);
-    if (event.request.mode === 'navigate') {
-        event.respondWith((async () => {
-            try {
-                const preloadResponse = await event.preloadResponse;
-                if (preloadResponse) {
-                    return preloadResponse;
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.match(event.request)
+            .then(response => {
+                if (response) {
+                    return response;
+                } else {
+                    return fetch(event.request)
+                        .then(res => {
+                            return caches.open('dynamic')
+                                .then(cache => {
+                                    cache.put(event.request.url, res.clone());
+                                    return res;
+                                })
+                        });
                 }
+            })
+    );
+});
 
-                const networkResponse = await fetch(event.request);
-                return networkResponse;
-            } catch (error) {
-                console.log('[Service Worker] Fetch failed; returning offline page instead.', error);
+self.addEventListener('sync', event => {
+    console.log('[Service Worker] Syncing');
 
-                const cache = await caches.open(CACHE_NAME);
-                const cachedResponse = await cache.match(OFFLINE_URL);
-                return cachedResponse;
-            }
-        })());
+    if (event.tag === 'sync-request') {
+        event.waitUntil(
+            readAllData('sync-requests')
+                .then(async data => {
+                    const requests = [];
+
+                    for (const d of data) {
+                        requests.push(fetch('https://cdn.expediapartnersolutions.com/ean-rapid-site/Content_Reference_Lists_2_3.json', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                sunday: d.sunday
+                            })
+                        }));
+                    }
+
+                    const results = await Promise.all(requests);
+
+                    results.map((response, index) => {
+                        if (response.ok) {
+                            deleteItemFromData('sync-requests', data[index].id);
+                        }
+                    })
+                })
+        );
     }
 });
-
-

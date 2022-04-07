@@ -1,5 +1,3 @@
-//установка приложения, кнопка
-
 const divInstall = document.getElementById('installContainer');
 const butInstall = document.getElementById('butInstall');
 
@@ -38,11 +36,20 @@ window.addEventListener('appinstalled', (event) => {
     window.deferredPrompt = null;
 });
 
-/////////////////////////
 
-/* Only register a service worker if it's supported */
+
+/*/!* Only register a service worker if it's supported *!/
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js');
+}*/
+
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('sw.js')
+        .then(event => {
+            console.log('Service worker registered', event);
+        });
 }
 
 /**
