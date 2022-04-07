@@ -6,7 +6,7 @@
   "scope": "index.html",
   "theme_color": "#05b0bf",
   "background_color": "#05b0bf",
-  "display": "standalone",
+  "display": "minimal-ui",
   "orientation": "natural",
   "dir": "ltr",
   "lang": "en-US",
