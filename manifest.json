@@ -1,25 +1,51 @@
 {
   "name": "Smile Inspire",
   "short_name": "SmileInspire",
-  "description": "",
-  "start_url": "index.html",
-  "scope": "index.html",
-  "theme_color": "#05b0bf",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "any",
   "background_color": "#05b0bf",
-  "display": "minimal-ui",
-  "orientation": "natural",
-  "dir": "ltr",
-  "lang": "en-US",
+  "theme_color": "#05b0bf",
   "icons": [
-  {
-      "src": "favicon/android-chrome-192x192.png",
+    {
+      "src": "/favicon/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
-  },
-  {
-      "src": "favicon/android-chrome-512x512.png",
+    },
+    {
+      "src": "/favicon/maskable_icon.png",
+      "type": "image/png",
+      "sizes": "731x731",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
-  }
+    }
+  ],
+  "description": "SmileInspire is provides redeemable rewards for patients of dental providers participating in the SmileInspire program. This application will allow you to track your pending/issued rewards and redeem those points.",
+  "lang": "en",
+  "categories": [
+    "rewards",
+    "productivity",
+    "dental"
+  ],
+  "screenshots": [
+    {
+      "src": "/favicon/screenshot1.png",
+      "type": "image/png",
+      "sizes": "414x736"
+    },
+    {
+      "src": "/favicon/screenshot2.png",
+      "type": "image/jpeg",
+      "sizes": "375x791"
+    },
+    {
+      "src": "/favicon/screenshot3.png",
+      "type": "image/jpeg",
+      "sizes": "414x736"
+    }
   ]
 }
