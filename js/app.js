@@ -1,3 +1,5 @@
+//установка приложения, кнопка
+
 const divInstall = document.getElementById('installContainer');
 const butInstall = document.getElementById('butInstall');
 
@@ -35,6 +37,8 @@ window.addEventListener('appinstalled', (event) => {
     // Очистить «deferredPrompt» для сборщика мусора
     window.deferredPrompt = null;
 });
+
+/////////////////////////
 
 /* Only register a service worker if it's supported */
 if ('serviceWorker' in navigator) {
