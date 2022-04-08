@@ -1,4 +1,4 @@
-const CACHE_NAME = 'offline';
+/*const CACHE_NAME = 'offline';
 const OFFLINE_URL = 'offline.html';
 
 self.addEventListener('install', function(event) {
@@ -12,6 +12,15 @@ self.addEventListener('install', function(event) {
     })());
 
     self.skipWaiting();
+});*/
+
+const urlsToCache = ["js/app.js", "css/styles.css", "my-awards.html", "image/logo.svg"];
+const CACHE_NAME = 'offline';
+self.addEventListener("install", (event) => {
+    event.waitUntil(async () => {
+        const cache = await caches.open("CACHE_NAME");
+        return cache.addAll(urlsToCache);
+    });
 });
 
 self.addEventListener('activate', (event) => {
