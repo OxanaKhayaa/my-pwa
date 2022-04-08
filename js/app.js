@@ -36,10 +36,12 @@ window.addEventListener('appinstalled', (event) => {
     window.deferredPrompt = null;
 });
 
+
 /* Only register a service worker if it's supported */
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js');
 }
+
 
 /**
  * Warn the page must be served over HTTPS
