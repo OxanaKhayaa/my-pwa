@@ -1,4 +1,4 @@
-/*const CACHE_NAME = 'offline';
+const CACHE_NAME = 'offline';
 const OFFLINE_URL = 'offline.html';
 
 self.addEventListener('install', function(event) {
@@ -12,38 +12,6 @@ self.addEventListener('install', function(event) {
     })());
 
     self.skipWaiting();
-});*/
-
-const cacheName = 'pwa_v1';
-
-const includeToCache = [
-    '/',
-    'index.html',
-    'my-awards.html',
-    'refer-and-earn.html',
-    'shop.html',
-    'ways-to-earns.html',
-    'image/logo.svg',
-    'css/styles.css',
-    'js/main.js'
-];
-
-/* Start the service worker and cache all of the app's content */
-self.addEventListener('install', e => {
-    e.waitUntil(
-        caches.open(cacheName).then(cache => {
-            return cache.addAll(includeToCache);
-        })
-    );
-});
-
-/* Serve cached content when offline */
-self.addEventListener('fetch', e => {
-    e.respondWith(
-        caches.match(e.request).then(response => {
-            return response || fetch(e.request);
-        })
-    );
 });
 
 self.addEventListener('activate', (event) => {
@@ -75,8 +43,8 @@ self.addEventListener('fetch', function(event) {
             } catch (error) {
                 console.log('[Service Worker] Fetch failed; returning offline page instead.', error);
 
-                /*const cache = await caches.open(CACHE_NAME);
-                const cachedResponse = await cache.match(OFFLINE_URL);*/
+                const cache = await caches.open(CACHE_NAME);
+                const cachedResponse = await cache.match(OFFLINE_URL);
                 return cachedResponse;
             }
         })());
