@@ -1,7 +1,27 @@
-const CACHE_NAME = 'offline';
-const OFFLINE_URL = 'offline.html';
+/*const CACHE_NAME = 'offline';
+const OFFLINE_URL = 'offline.html';*/
 
-self.addEventListener('install', function(event) {
+// Add multuple URL to the cache
+async function cacheMultipleFiles() {
+    const cacheName = document.querySelector("#cacheName").value;
+    if ('caches' in window) {
+        try {
+            const cache = await caches.open(cacheName);
+            const urlsToCache = ["./", "style.css", "login.html", "shop.json",
+                "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"]
+            await cache.addAll(urlsToCache);
+            showResult(urlsToCache.length + " files were cached on " + cacheName);
+
+        } catch (error) {
+            showResult("Error while caching multiple files. " + error.message);
+        }
+    } else {
+        showResult("Cache Storage not available");
+    }
+};
+
+
+/*self.addEventListener('install', function(event) {
     console.log('[ServiceWorker] Install');
 
     event.waitUntil((async () => {
@@ -12,7 +32,7 @@ self.addEventListener('install', function(event) {
     })());
 
     self.skipWaiting();
-});
+});*/
 
 self.addEventListener('activate', (event) => {
     console.log('[ServiceWorker] Activate');
@@ -43,8 +63,8 @@ self.addEventListener('fetch', function(event) {
             } catch (error) {
                 console.log('[Service Worker] Fetch failed; returning offline page instead.', error);
 
-                const cache = await caches.open(CACHE_NAME);
-                const cachedResponse = await cache.match(OFFLINE_URL);
+                /*const cache = await caches.open(CACHE_NAME);
+                const cachedResponse = await cache.match(OFFLINE_URL);*/
                 return cachedResponse;
             }
         })());
