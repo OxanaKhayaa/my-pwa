@@ -7,7 +7,7 @@ async function cacheMultipleFiles() {
     if ('caches' in window) {
         try {
             const cache = await caches.open(cacheName);
-            const urlsToCache = ["./", "style.css", "login.html", "shop.json",
+            const urlsToCache = ["./", "style.css", "login.html", "shop.html",
                 "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"]
             await cache.addAll(urlsToCache);
             showResult(urlsToCache.length + " files were cached on " + cacheName);
