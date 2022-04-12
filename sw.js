@@ -3,7 +3,7 @@ var CACHE_DYNAMIC_NAME = 'dynamic-v2';
 var STATIC_FILES = [
     'index.html',
     'refer-and-earn.html',
-    
+
     'shop.html'
 ];
 
@@ -89,7 +89,7 @@ self.addEventListener('fetch', function (event) {
                                 return caches.open(CACHE_DYNAMIC_NAME)
                                     .then(function (cache) {
                                         // trimCache(CACHE_DYNAMIC_NAME, 3);
-                                        cache.put(event.request.url, res.clone());
+                                        //cache.put(event.request.url, res.clone());
                                         return res;
                                     })
                             })
