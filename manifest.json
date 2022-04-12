@@ -41,11 +41,6 @@
       "src": "favicon/screenshot2.png",
       "type": "image/jpeg",
       "sizes": "375x791"
-    },
-    {
-      "src": "favicon/screenshot3.png",
-      "type": "image/jpeg",
-      "sizes": "414x736"
     }
   ]
 }
