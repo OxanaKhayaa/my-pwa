@@ -12,8 +12,8 @@ self.addEventListener('install', function(event) {
                     'index.html',
                     'login.html',
                     'refer-and-earn.html',
-                    'ways-to-earn.html',
-                    'shop.html'
+                    'ways-to-earn.html'
+
                     /*'/src/js/app.js',
                     '/src/js/feed.js',
                     '/src/js/promise.js',
