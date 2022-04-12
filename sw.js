@@ -3,7 +3,7 @@ var CACHE_DYNAMIC_NAME = 'dynamic-v2';
 var STATIC_FILES = [
     'index.html',
     'refer-and-earn.html',
-    'ways-to-earn.html',
+    
     'shop.html'
 ];
 
