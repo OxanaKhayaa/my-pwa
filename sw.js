@@ -35,6 +35,14 @@ let filesToCache = [
     'image/shop-page/resort.jpg'
 ];
 
+self.addEventListener('install', function(e) {
+    e.waitUntil(
+        caches.open(cacheName).then(function(cache) {
+            return cache.addAll(filesToCache);
+        })
+    );
+});
+
 self.addEventListener('install', function(event) {
     console.log('[ServiceWorker] Install');
 
@@ -49,17 +57,6 @@ self.addEventListener('install', function(event) {
 });
 
 
-self.addEventListener('install', function(e) {
-    e.waitUntil(
-        caches.open(cacheName).then(function(cache) {
-            return cache.addAll(filesToCache);
-        })
-    );
-});
-
-
-
-
 self.addEventListener('activate', (event) => {
     console.log('[ServiceWorker] Activate');
     event.waitUntil((async () => {
@@ -72,6 +69,15 @@ self.addEventListener('activate', (event) => {
 
     // Tell the active service worker to take control of the page immediately.
     self.clients.claim();
+});
+
+/* Serve cached content when offline */
+self.addEventListener('fetch', function(e) {
+    e.respondWith(
+        caches.match(e.request).then(function(response) {
+            return response || fetch(e.request);
+        })
+    );
 });
 
 self.addEventListener('fetch', function(event) {
@@ -97,11 +103,3 @@ self.addEventListener('fetch', function(event) {
     }
 });
 
-/* Serve cached content when offline */
-self.addEventListener('fetch', function(e) {
-    e.respondWith(
-        caches.match(e.request).then(function(response) {
-            return response || fetch(e.request);
-        })
-    );
-});
