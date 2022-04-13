@@ -2,31 +2,34 @@ var CACHE_STATIC_NAME = 'static-v4';
 var CACHE_DYNAMIC_NAME = 'dynamic-v2';
 
 self.addEventListener('install', function(event) {
-    console.log('[Service Worker] Installing Service Worker ...', event);
-    event.waitUntil(
-        caches.open(CACHE_STATIC_NAME)
-            .then(function(cache) {
-                console.log('[Service Worker] Precaching App Shell');
-                cache.addAll([
-                    'index.html',
-                    'login.html',
-                    'refer-and-earn.html',
-                    'ways-to-earn.html',
-                    'style.min.css'
-                    /*'/src/js/app.js',
-                    '/src/js/feed.js',
-                    '/src/js/promise.js',
-                    '/src/js/fetch.js',
-                    '/src/js/material.min.js',
-                    '/src/css/app.css',
-                    '/src/css/feed.css',
-                    '/src/images/main-image.jpg',
-                    'https://fonts.googleapis.com/css?family=Roboto:400,700',
-                    'https://fonts.googleapis.com/icon?family=Material+Icons',
-                    'https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.indigo-pink.min.css'*/
-                ]);
-            })
-    )
+    console.log('[ServiceWorker] Install');
+
+    event.waitUntil((async () => {
+        const cache = await caches.open(CACHE_STATIC_NAME);
+        // Setting {cache: 'reload'} in the new request will ensure that the response
+        // isn't fulfilled from the HTTP cache; i.e., it will be from the network.
+        await cache.addAll([
+            'index.html',
+            'login.html',
+            'refer-and-earn.html',
+            'ways-to-earn.html',
+            'style.min.css'
+            /*'/src/js/app.js',
+            '/src/js/feed.js',
+            '/src/js/promise.js',
+            '/src/js/fetch.js',
+            '/src/js/material.min.js',
+            '/src/css/app.css',
+            '/src/css/feed.css',
+            '/src/images/main-image.jpg',
+            'https://fonts.googleapis.com/css?family=Roboto:400,700',
+            'https://fonts.googleapis.com/icon?family=Material+Icons',
+            'https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.indigo-pink.min.css'*/
+        ]);
+
+    })());
+
+    self.skipWaiting();
 });
 
 self.addEventListener('activate', function(event) {
