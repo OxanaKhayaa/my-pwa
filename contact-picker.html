@@ -63,133 +63,95 @@
                 <div class="form-login">
                     <h1 class="form-login__title">User Login</h1>
                     <form action="#">
-                        <div class="form-group">
-                            <label class="w-100">
-                                <span class="input-icon input-icon-left">
-                                    <input type="email" class="form-control" placeholder="Enter Email Address" required>
-                                    <span>
-                                        <svg aria-hidden="true" focusable="false" class="svg-icon svg-envelop"
-                                             width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path
-                                                d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6z"/><path
-                                                d="M2 8l7.501 6.001a4 4 0 0 0 4.998 0L22 8"/>
-                                        </svg>
-                                    </span>
-                                </span>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <label class="w-100">
-                                <span class="input-icon input-icon-left">
-                                    <input type="password" class="form-control" placeholder="Enter Password" required>
-                                    <span>
-                                        <svg aria-hidden="true" focusable="false" class="svg-icon svg-unlock"
-                                             width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect
-                                                x="3" y="10" width="18" height="12" rx="2"/><path
-                                                d="M6 6a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v4H6V6z"/>
-                                        </svg>
-                                    </span>
-                                </span>
-                            </label>
-                        </div>
-                        <div class="d-flex flex-wrap justify-content-center">
-                            <div class="form-action w-66 w-md-52">
-                                <a class="btn btn-info btn-block btn-m" href="my-awards.html">
-                                    <svg aria-hidden="true" focusable="false" class="svg-icon svg-user svg-left"
-                                         width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2"
-                                         stroke-linecap="round" stroke-linejoin="round" class="ai ai-Person">
-                                        <circle cx="12" cy="7" r="5"/>
-                                        <path d="M17 14h.352a3 3 0 0 1 2.976 2.628l.391 3.124A2 2 0 0 1 18.734 22H5.266a2 2 0 0 1-1.985-2.248l.39-3.124A3 3 0 0 1 6.649 14H7"/>
-                                    </svg>
-                                    Login
-                                </a>
-                            </div>
-                            <div class="form-action w-66 w-md-52 mb-20">
-                                <a href="new-patient.html" class="btn btn-success btn-block btn-m">
-                                    <svg aria-hidden="true" focusable="false" class="svg-icon svg-plus svg-left"
-                                         width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                         class="ai ai-Plus">
-                                        <path d="M12 20v-8m0 0V4m0 8h8m-8 0H4"/>
-                                    </svg>
-                                    New patient
-                                </a>
-                            </div>
-                            <div class="form-action w-100 text-center">
-                                <a href="passwordreset.html" class="text-underline">Forgot Password - Click Here.</a>
-                            </div>
+                        <h1>
+                            Contact Picker API Demo
+                        </h1>
 
-                            <div>
-                                <h1>
-                                    Contact Picker API Demo
-                                </h1>
+                        <p id="requireHTTPS" class="hidden">
+                            <b>STOP!</b> This page <b>must</b> be served over HTTPS.
+                            Please <a>reload this page via HTTPS</a>.
+                        </p>
 
-                                <p>
-                                    Access to the user’s contacts has been a feature of native apps since (almost)
-                                    the dawn of time. The <b>Contact Picker API</b> is a new, on-demand picker
-                                    that allows users to select an entry or entries from their contact list
-                                    and share limited details of the selected contact(s) with a website.
-                                    It allows users to share only what they want, when they want, and makes
-                                    it easier for users to reach and connect with their friends and family.
-                                </p>
+                        <p id="notSupported">
+                            <b>Sorry!</b> This browser doesn't support the Contact
+                            Picker API, which required for this demo. Try enabling the
+                            <code>#enable-experimental-web-platform-features</code> in
+                            chrome://flags and try again.
+                        </p>
 
-                                <p>
-                                    <b>Note:</b> This demo requires Chrome 80 or later
-                                    running on Android M or later to work properly.
-                                </p>
+                        <p>
+                            Access to the user’s contacts has been a feature of native apps since (almost)
+                            the dawn of time. The <b>Contact Picker API</b> is a new, on-demand picker
+                            that allows users to select an entry or entries from their contact list
+                            and share limited details of the selected contact(s) with a website.
+                            It allows users to share only what they want, when they want, and makes
+                            it easier for users to reach and connect with their friends and family.
+                        </p>
 
-                                <ol>
-                                    <li>
-                                        <input type="checkbox" id="multiple" />
-                                        <label for="multiple">Multiple results?</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="name" disabled />
-                                        <label for="name">Include name?</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="email" disabled />
-                                        <label for="email">Include email addresses?</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="tel" disabled />
-                                        <label for="tel">Include telephone numbers?</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="address" disabled />
-                                        <label for="address">Include addresses? (Chrome 84 and later)</label>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" id="icon" disabled />
-                                        <label for="icons">Include icons? (Chrome 84 and later)</label>
-                                    </li>
-                                </ol>
+                        <p>
+                            <b>Note:</b> This demo requires Chrome 80 or later
+                            running on Android M or later to work properly.
+                        </p>
 
-                                <p>
-                                    This demo <b>does not</b>
-                                    share or upload your contacts. It simply shows them on screen, and no
-                                    contact data is transferred off this device.
-                                </p>
+                        <ol>
+                            <li>
+                                <input type="checkbox" id="multiple" />
+                                <label for="multiple">Multiple results?</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="name" disabled />
+                                <label for="name">Include name?</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="email" disabled />
+                                <label for="email">Include email addresses?</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="tel" disabled />
+                                <label for="tel">Include telephone numbers?</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="address" disabled />
+                                <label for="address">Include addresses? (Chrome 84 and later)</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="icon" disabled />
+                                <label for="icons">Include icons? (Chrome 84 and later)</label>
+                            </li>
+                        </ol>
 
-                                <p>
-                                    <button id="butRequest" type="button" disabled>
-                                        Open contact picker
-                                    </button>
-                                </p>
+                        <p>
+                            This demo <b>does not</b>
+                            share or upload your contacts. It simply shows them on screen, and no
+                            contact data is transferred off this device.
+                        </p>
 
-                                <p>
-                                    <b>Results</b>
-                                </p>
-                                <ul id="results">
-                                    <li>Results will be populated here.</li>
-                                </ul>
-                                <pre id="rawResults">
-                                </pre>
+                        <p>
+                            <button id="butRequest" type="button" disabled>
+                                Open contact picker
+                            </button>
+                        </p>
 
+                        <p>
+                            <b>Results</b>
+                        </p>
+                        <ul id="results">
+                            <li>Results will be populated here.</li>
+                        </ul>
+                        <pre id="rawResults">
+    </pre>
 
-                            </div>
-                        </div>
+                        <p>
+                            See <a href="https://developers.google.com/web/updates/2019/08/contact-picker" target="_blank">A Contact Picker for the Web</a>
+                            for complete details on the API, including use cases, how it was designed, and how to use it.
+                        </p>
+
+                        <p>
+                            Check out the
+                            <a href="https://glitch.com/edit/#!/contact-picker">source</a>
+                            for this sample, or
+                            <a href="https://glitch.com/edit/#!/remix/contact-picker">remix it</a> on Glitch.
+                        </p>
                     </form>
                 </div>
             </section>
