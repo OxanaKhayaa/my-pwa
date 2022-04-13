@@ -8,7 +8,7 @@ let filesToCache = [
     'my-awards.html',
     'new-patient.html',
     'passwordreset.html',
-    'refer-and-earn.html',
+    //'refer-and-earn.html',
     'ways-to-earn.html',
     'shop.html',
     'css/style.min.css',
