@@ -18,7 +18,6 @@ var filesToCache = [
     'image/girl-with-phone.webp',
     'image/man-with-phone.jpg',
     'image/man-with-phone.webp',
-    'image/man-with-phone.jpg',
     'image/menu-bg.webp',
     'image/menu-bg.jpg',
     'image/shop-page/brand-name.webp',
