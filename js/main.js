@@ -1,6 +1,8 @@
+"use strict"
+
 //////////////////////////////// Menu
 
-var mobileMenu = new MobileSwipeMenu('#menu', {
+let mobileMenu = new MobileSwipeMenu('#menu', {
     mode: 'right',
     width: window.innerWidth / 1,
     enableBodyHook: true,
@@ -20,11 +22,11 @@ document.getElementById('openMenu').addEventListener('click', function () {
 
 /////////////////////////////////////////////// tabs
 
-var jsTriggers = document.querySelectorAll('.js-tab-trigger');
+let jsTriggers = document.querySelectorAll('.js-tab-trigger');
 
 jsTriggers.forEach(function(trigger) {
     trigger.addEventListener('click', function() {
-        var id = this.getAttribute('data-tab'),
+        let id = this.getAttribute('data-tab'),
             content = document.querySelector('.js-tab-content[data-tab="'+id+'"]'),
             activeTrigger = document.querySelector('.js-tab-trigger.active'),
             activeContent = document.querySelector('.js-tab-content.active');
@@ -36,3 +38,23 @@ jsTriggers.forEach(function(trigger) {
         content.classList.add('active');
     });
 });
+
+//////////////////////////////////////////////// modal
+
+let modal = document.getElementById("modal_window");
+let btn = document.getElementById("modal_btn");
+let span = document.getElementsByClassName("modal_close")[0];
+
+btn.onclick = function () {
+    modal.style.display = "flex";
+};
+
+span.onclick = function () {
+    modal.style.display = "none";
+};
+
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
