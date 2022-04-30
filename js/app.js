@@ -2,12 +2,9 @@ const divInstall = document.getElementById('installContainer');
 const butInstall = document.getElementById('butInstall');
 
 window.addEventListener('beforeinstallprompt', (event) => {
-    // Запрет показа информационной мини-панели на мобильных устройствах.
     event.preventDefault();
     console.log('👍', 'beforeinstallprompt', event);
-    // Убираем событие, чтобы его можно было активировать позже.
     window.deferredPrompt = event;
-    // Убираем класс «hidden» из контейнера кнопки установки.
     divInstall.classList.toggle('hidden', false);
 });
 
@@ -15,29 +12,20 @@ butInstall.addEventListener('click', async () => {
     console.log('👍', 'butInstall-clicked');
     const promptEvent = window.deferredPrompt;
     if (!promptEvent) {
-        // Отложенный запрос недоступен.
         return;
     }
-    // Показать запрос на установку.
     promptEvent.prompt();
-    // Записать результат в журнал.
     const result = await promptEvent.userChoice;
     console.log('👍', 'userChoice', result);
-    // Сбросить переменную отложенного запроса:
-    // prompt() можно вызвать только один раз.
     window.deferredPrompt = null;
-    // Скрыть кнопку установки.
     divInstall.classList.toggle('hidden', true);
 });
 
 window.addEventListener('appinstalled', (event) => {
     console.log('👍', 'appinstalled', event);
-    // Очистить «deferredPrompt» для сборщика мусора
     window.deferredPrompt = null;
 });
 
-
-/* Only register a service worker if it's supported */
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js');
 }
