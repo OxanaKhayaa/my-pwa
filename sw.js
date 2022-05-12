@@ -37,7 +37,7 @@ self.addEventListener("fetch", (event) => {
                     const networkResponse = await fetch(event.request);
                     return networkResponse;
                 } catch (error) {
-                    console.log("Не удалось получить данные; вместо этого возвращаем страницу для автономного режима.", error);
+                    console.log("Failed to get data; instead we return the page for offline mode.", error);
 
                     const cache = await caches.open(CACHE_NAME);
                     const cachedResponse = await cache.match(OFFLINE_URL);
