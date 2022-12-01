@@ -20,6 +20,15 @@ document.getElementById('openMenu').addEventListener('click', function () {
     mobileMenu.openMenu();
 });
 
+////////////// toggle menu
+
+let menuElem = document.querySelector('.dropdown');
+let titleElem = menuElem.querySelector('.dropdown-toggle');
+
+titleElem.onclick = function() {
+    menuElem.classList.toggle('open');
+};
+
 /////////////////////////////////////////////// tabs
 
 let jsTriggers = document.querySelectorAll('.js-tab-trigger');
