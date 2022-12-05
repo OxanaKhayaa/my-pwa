@@ -125,7 +125,6 @@
             </div>
 
             <section class="container">
-
                 <div class="form-login">
                     <h1 class="form-login__title">New Patient</h1>
                     <form action="#">
@@ -192,16 +191,19 @@
     let alert = document.getElementsByClassName('alert')[0]
 
     span.onclick = function () {
+        let check = true
         for(let i = 0; i < checkbox.length; i++) {
-            if (checkbox[i].checked) {
-                modal.style.display = "none";
+            check&= checkbox[i].checked
+        }
+        if (check) {
+            modal.style.display = "none";
+            alert.style.display = 'none';
+            for(let i = 0; i < checkbox.length; i++) {
                 checkbox[i].checked = false;
-                alert.style.display = 'none'
-            } else {
-                checkbox[i].checked = false;
-                modal.style.display = "flex";
-                alert.style.display = 'block';
             }
+        } else {
+            alert.style.display = 'block';
+            modal.style.display = "flex";
         }
     }
 </script>
