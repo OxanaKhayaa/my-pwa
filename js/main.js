@@ -22,12 +22,12 @@ document.getElementById('openMenu').addEventListener('click', function () {
 
 ////////////// toggle menu
 
-let menuElem = document.querySelector('.dropdown');
+/*let menuElem = document.querySelector('.dropdown');
 let titleElem = menuElem.querySelector('.dropdown-toggle');
 
 titleElem.onclick = function() {
     menuElem.classList.toggle('open');
-};
+};*/
 
 /////////////////////////////////////////////// tabs
 
@@ -55,7 +55,7 @@ let btn = document.getElementById("modal_btn");
 let span = document.getElementsByClassName("modal_close")[0];
 
 btn.onclick = function () {
-    modal.style.display = "flex";
+        modal.style.display = "flex";
 };
 
 span.onclick = function () {
